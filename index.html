@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fetch the meme</h1>
+    <button id="btnClick">Fetch the meme !</button>
+    <img id="image" style="width: 50vw; height: auto; display: block;">
+
+
+    <script>
+        let btn=document.getElementById('btnClick')
+        let image=document.getElementById('image')
+       btn.addEventListener('click',function(){
+           fetch("https://meme-api.herokuapp.com/gimme")
+           .then(res=>res.json())
+           .then(result=>{
+               console.log(result)
+               image.src=result.url
+           })
+           .catch(err=>console.log(err))
+       })
+    </script>
+</body>
+</html>
